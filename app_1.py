@@ -65,8 +65,8 @@ if camera and input_image is not None:
 
     # 결과 출력
     result = "무승부입니다!"
-    if  (user_choice_index == 2 and computer_choice_index == 1) or 
-        (user_choice_index == 1 and computer_choice_index == 0) or 
+    if  (user_choice_index == 2 and computer_choice_index == 1) or \
+        (user_choice_index == 1 and computer_choice_index == 0) or \
         (user_choice_index == 0 and computer_choice_index == 2):
         result = "컴퓨터가 이겼습니다!"
     elif user_choice_index != computer_choice_index:
