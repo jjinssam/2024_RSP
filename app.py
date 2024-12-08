@@ -1,15 +1,15 @@
 import streamlit as st
 import tensorflow as tf
-from tensorflow.keras.applications.mobilenet v2 import preprocess_input
+from tensorflow.keras.applications.mobilenet_v2 import preprocess_input
 import numpy as np
 import cv2
 import random
 
 LABELS_EN = ["paper", "rock", "scissors"]
-LABELS_KR = ["보", "바위", "가위"']
+LABELS_KR = ["보", "바위", "가위"]
 
 # 모델 로드
-model = tf.keras.models. load_model("/content/drive/MyDrive/241206_인공지능원리탐구/rps_mobilenetv2_1203.h5")
+model = tf.keras.models. load_model("rps_mobilenetv2_1203.h5")
 
 def get_computer_choice(user_choice_index):
     if user_choice_index == 2:
@@ -45,27 +45,27 @@ if camera and input_image is not None:
     probabilities, user_choice_index = predict_image(input_image, model)
     user_choice_kr = LABELS_KR [user_choice_index] # 2 2141
 
-    st.write(f" ** 사용자 선택 :** {user_choice_kr} "
-    f"(보 확률: {probabilities[0] :. 2%}, 바위 확률: {probabilities[1] :. 2%}, 가위 확률: {probabilities[2] :. 2%})")
+    st.write(f"**사용자 선택:** {user_choice_kr} "
+    f"(보 확률: {probabilities[0] :.2%}, 바위 확률: {probabilities[1] :.2%}, 가위 확률: {probabilities[2] :.2%})")
 
-    col3, col_vs, col4 = st.columns( [4, 1, 4])
+    col3, col_vs, col4 = st.columns([4, 1, 4])
 
     with col3:
         user_image_path = f"{LABELS_EN[user_choice_index]}.png"
-        st.image(user_image_path, caption=f"A|gx} MEN: {LABELS_KR[user_choice_index]}", use_column_width=True)
+        st.image(user_image_path, caption=f"사용자 선택: {LABELS_KR[user_choice_index]}", use_column_width=True)
 
     with col_vs:
-     st.markdown("<h2 style='text-align: center; '>VS</h2>", unsafe_allow_html=True)
+        st.markdown("<h2 style='text-align: center;'>VS</h2>", unsafe_allow_html=True)
 
     with col4:
         computer_choice_index = get_computer_choice(user_choice_index)
-        computer_choice_en = LABELS_EN[computer_choice_index] # go|
+        computer_choice_en = LABELS_EN[computer_choice_index] # 영어
         computer_image_path = f"{computer_choice_en}.png"
-        st.image(computer_image_path, caption=f"# M4: {LABELS_KR[computer_choice_index]}", use_column_width=True)
+        st.image(computer_image_path, caption=f"컴퓨터 선택: {LABELS_KR[computer_choice_index]}", use_column_width=True)
 
     # 결과 출력
     result = "무승부입니다!"
-    if (user_choice_index == 2 and computer_choice_index == 1) or \
+    if  (user_choice_index == 2 and computer_choice_index == 1) or \
         (user_choice_index == 1 and computer_choice_index == 0) or \
         (user_choice_index == 0 and computer_choice_index == 2):
         result = "컴퓨터가 이겼습니다!"
