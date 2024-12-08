@@ -9,7 +9,7 @@ LABELS_EN = ["paper", "rock", "scissors"]
 LABELS_KR = ["보", "바위", "가위"]
 
 # 모델 로드
-model = tf.keras.models.load_model("rps_mobilenetv2_1203.h5",  compile=False)
+model = tf.keras.models.load_model("rps_mobilenetv2_1203.h5", compile=False)
 
 def get_computer_choice(user_choice_index):
     if user_choice_index == 2:
