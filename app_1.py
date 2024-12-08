@@ -5,7 +5,7 @@ import numpy as np
 import cv2
 import random
 
-LABELS_EN = ["paper", "rock", "scissors"]
+LABELS_EN = ["paper", "rock", "scissors"] 
 LABELS_KR = ["보", "바위", "가위"]
 
 # 모델 로드
